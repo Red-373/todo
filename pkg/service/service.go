@@ -1,12 +1,16 @@
 package service
 
-import "github.com/Red-373/todo/pkg/repository"
+import (
+	"github.com/Red-373/todo"
+	"github.com/Red-373/todo/pkg/repository"
+)
 
-type Authorization struct {
+type Authorization interface {
+	CreateUser(user todo.User) (int, error)
 }
-type TodoList struct {
+type TodoList interface {
 }
-type TodoItem struct {
+type TodoItem interface {
 }
 
 type Service struct {
@@ -15,6 +19,8 @@ type Service struct {
 	TodoItem
 }
 
-func NewService(repo *repository.Repository) *Service {
-	return &Service{}
+func NewService(repos *repository.Repository) *Service {
+	return &Service{
+		Authorization: NewAuthService(repos.Authorization),
+	}
 }

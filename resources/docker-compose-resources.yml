@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  postgre__todo.todo:
+    image: postgres:13.2-alpine
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: app
+    volumes:
+      - /var/postgre__todo.todo:/var/lib/postgresql/data
+    ports:
+      - "2000:5432"
+    restart: always

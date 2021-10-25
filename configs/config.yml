@@ -1,0 +1,8 @@
+port: "2080"
+
+db:
+  username: "app"
+  host: "localhost"
+  dbname: "app"
+  port: "2000"
+  sslmode: "disable"
