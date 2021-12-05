@@ -21,7 +21,7 @@ func main() {
 	if err := godotenv.Load(); err != nil {
 		logrus.Fatalf("Failed to load env file: %s", err.Error())
 	}
-	logrus.Println(viper.GetString("db.sslmode"))
+	logrus.Println( viper.GetString("db.sslmode"))
 	db, err := repository.NewPostgresDb(repository.Config{
 		Host:     viper.GetString("db.host"),
 		Port:     viper.GetString("db.port"),
