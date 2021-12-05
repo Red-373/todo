@@ -1,5 +1,18 @@
 version: "3.8"
 services:
+  server:
+    image: jewelry-shop
+    container_name: "jewelry-shop"
+    build: ./Dockerfile
+    volumes:
+      - ./.build/volumes/logs:/logs
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgre__todo.todo
+
   postgre__todo.todo:
     image: postgres:13.2-alpine
     environment:
